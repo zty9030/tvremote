@@ -1,9 +1,25 @@
 console.log("TV Remote Started");
 
-document
-    .getElementById("btn-up")
-    .onclick = () => {
+async function send(key){
 
-        console.log("UP");
+    const r = await fetch("/api/key",{
 
-    };
+        method:"POST",
+
+        headers:{
+            "Content-Type":"application/json"
+        },
+
+        body:JSON.stringify({
+
+            key:key
+
+        })
+
+    });
+
+    const json=await r.json();
+
+    console.log(json);
+
+}
