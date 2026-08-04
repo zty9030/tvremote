@@ -1,5 +1,5 @@
 package model
 
 type KeyRequest struct {
-    Key string `json:"key"`
+	Key string `json:"key"`
 }

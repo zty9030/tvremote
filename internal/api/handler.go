@@ -20,8 +20,15 @@ func Key(w http.ResponseWriter, r *http.Request) {
     }
 
     log.Printf("KEY = %s\n", req.Key)
+    
+    resp := model.APIResponse{
+        Success: true,
+        Message: "OK",
+    }
 
     w.Header().Set("Content-Type", "application/json")
 
-    w.Write([]byte(`{"status":"ok"}`))
+    if err := json.NewEncoder(w).Encode(resp); err != nil {
+	log.Printf("encode response failed: %v", err)
+    }
 }

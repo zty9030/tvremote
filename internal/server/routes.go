@@ -1,19 +1,19 @@
 package server
 
 import (
-    "net/http"
+	"net/http"
 
-    "github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5"
 
-    "tvremote/internal/api"
+	"tvremote/internal/api"
 )
 
 func registerRoutes(r *chi.Mux) {
 
-    r.Post("/api/key", api.Key)
+	r.Post("/api/key", api.Key)
 
-    fs := http.FileServer(http.Dir("./web"))
+	fs := http.FileServer(http.Dir("./web"))
 
-    r.Handle("/*", fs)
+	r.Handle("/*", fs)
 
 }
