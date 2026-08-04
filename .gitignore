@@ -1,0 +1,36 @@
+# Go
+/bin/
+/build/
+
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go coverage
+coverage.out
+
+# Go modules
+vendor/
+
+# IDE
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Environment
+.env
+
+# Dev Container cache
+.devcontainer/.cache/
+
+# Temporary
+tmp/
