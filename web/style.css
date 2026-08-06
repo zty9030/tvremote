@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1e1e1e;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    overflow-x: hidden;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 420px;
+
+    margin: 0 auto;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.connection {
+    text-align: center;
+    margin-bottom: 24px;
+    color: #4CAF50;
+    font-size: 16px;
+}
+
+.top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    margin-left: 18px;
+    margin-right: 18px;
+}
+
+
+/* -----------------------------
+   Direction Pad
+------------------------------*/
+
+.dpad {
+    display: grid;
+
+    grid-template-columns: 80px 80px 80px;
+    grid-template-rows: 80px 80px 80px;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 16px;
+
+    margin-bottom: 24px;
+}
+
+.up {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.left {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.ok {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.right {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.down {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+/* -----------------------------
+   Common Button
+------------------------------*/
+
+.key {
+    width: 80px;
+    height: 80px;
+
+    border: none;
+    border-radius: 16px;
+
+    background: #333;
+    color: white;
+
+    font-size: 26px;
+    cursor: pointer;
+
+    transition: background .15s;
+}
+
+.key:active {
+    background: #666;
+}
+
+.ok {
+    font-size: 22px;
+    font-weight: bold;
+
+    background: #1565C0;
+}
+
+.top-key {
+
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    font-size: 18px;
+}
+/* -----------------------------
+   Button Rows
+------------------------------*/
+
+.button-row {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 16px;
+
+    margin-bottom: 18px;
+
+}
+
+/* -----------------------------
+   Log
+------------------------------*/
+
+.log-panel {
+
+    margin-top: 30px;
+
+}
+
+.log-title {
+
+    margin-bottom: 10px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+}
+
+.log {
+
+    min-height: 120px;
+
+    background: #2c2c2c;
+
+    border-radius: 12px;
+
+    padding: 12px;
+
+    overflow-y: auto;
+
+    font-family: monospace;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    white-space: pre-line;
+
+}
+
+/* -----------------------------
+   Small Phones
+------------------------------*/
+
+@media (max-width: 390px) {
+
+    .key {
+
+        width: 70px;
+        height: 70px;
+
+        font-size: 22px;
+
+    }
+
+
+    .dpad {
+
+        grid-template-columns: 70px 80px 70px;
+        grid-template-rows: 70px 80px 70px;
+
+    }
+
+}

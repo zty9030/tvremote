@@ -12,7 +12,7 @@ import (
 
 func main() {
 
-	adb := executor.NewADBExecutor("host.docke.internal:16416")
+	adb := executor.NewADBExecutor("host.docker.internal:16416")
 
 	inputService := input.NewService(adb)
 

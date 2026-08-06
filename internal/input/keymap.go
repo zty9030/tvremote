@@ -12,4 +12,6 @@ var keyMap = map[string]int{
 	"VOL_UP":   24,
 	"VOL_DOWN": 25,
 	"POWER": 26,
+    "SOURCE": 178,
+	"MUTE": 164,
 }

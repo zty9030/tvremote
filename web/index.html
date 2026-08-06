@@ -2,39 +2,98 @@
 <html lang="en">
 
 <head>
-
-<meta charset="utf-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1">
-
-<title>TV Remote</title>
-
-<link rel="stylesheet"
-      href="/css/style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Android TV Remote</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
-
 <div class="container">
+    <h1>Android TV Remote</h1>
+    <div id="connection" class="connection">
+        🟢 Connected
+    </div>
+<div class="top-row">
+    <button class="key top-key" data-key="POWER">
+        ⏻
+    </button>
+    <button class="key top-key" data-key="SOURCE">
+        SRC
+    </button>
 
-    <h1>TV Remote</h1>
-
-<div class="remote">
-    <button onclick="send('UP')">▲</button>
-
-    <button onclick="send('LEFT')">◀</button>
-
-    <button onclick="send('OK')">OK</button>
-
-    <button onclick="send('RIGHT')">▶</button>
-
-    <button onclick="send('DOWN')">▼</button>
-
-    <button onclick="send('HOME')">🏠 Home</button>
 </div>
+    <!-- Direction Pad -->
+    <div class="dpad">
+
+        <button class="key up" data-key="UP">
+            ▲
+        </button>
+
+        <button class="key left" data-key="LEFT">
+            ◀
+        </button>
+
+        <button class="key ok" data-key="OK">
+            OK
+        </button>
+
+        <button class="key right" data-key="RIGHT">
+            ▶
+        </button>
+
+        <button class="key down" data-key="DOWN">
+            ▼
+        </button>
+
+    </div>
+
+    <!-- Navigation -->
+    <div class="button-row">
+
+        <button class="key" data-key="HOME">
+            🏠
+        </button>
+
+        <button class="key" data-key="BACK">
+            ←
+        </button>
+
+        <button class="key" data-key="MENU">
+            ☰
+        </button>
+
+    </div>
+
+    <!-- Volume -->
+    <div class="button-row">
+
+        <button class="key" data-key="VOL_UP">
+            🔊+
+        </button>
+
+        <button class="key" data-key="VOL_DOWN">
+            🔊-
+        </button>
+
+        <button class="key" data-key="MUTE">
+            🔇
+        </button>
+
+    </div>
+
+    <!-- Log -->
+
+    <div class="log-panel">
+
+        <div class="log-title">
+            Log
+        </div>
+
+        <div id="log" class="log">
+        </div>
+    </div>
 </div>
 
 <script src="/js/app.js"></script>
