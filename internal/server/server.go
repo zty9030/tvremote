@@ -4,13 +4,14 @@ import (
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
+	"tvremote/internal/api"
 )
 
-func New() http.Handler {
+func New(handler *api.Handler) http.Handler {
 
 	r := chi.NewRouter()
 
-	registerRoutes(r)
+	RegisterRoutes(r, handler)
 
 	return r
 }

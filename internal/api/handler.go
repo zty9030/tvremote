@@ -1,34 +1,45 @@
 package api
 
 import (
-    "encoding/json"
-    "log"
-    "net/http"
+	"encoding/json"
+	"net/http"
 
-    "tvremote/internal/model"
+	"tvremote/internal/input"
+	"tvremote/internal/model"
 )
 
-func Key(w http.ResponseWriter, r *http.Request) {
+type Handler struct {
+	input *input.Service
+}
 
-    var req model.KeyRequest
+func NewHandler(input *input.Service) *Handler {
+	return &Handler{
+		input: input,
+	}
+}
 
-    if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+func (h *Handler) Key(w http.ResponseWriter, r *http.Request) {
 
-        http.Error(w, err.Error(), http.StatusBadRequest)
+	var req model.KeyRequest
 
-        return
-    }
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+        writeJSON(w, http.StatusBadRequest, model.APIResponse{
+            Success: false,
+            Message: err.Error(),
+        })
+		return
+	}
 
-    log.Printf("KEY = %s\n", req.Key)
-    
-    resp := model.APIResponse{
+	if err := h.input.SendKey(req.Key); err != nil {
+        writeJSON(w, http.StatusInternalServerError, model.APIResponse{
+            Success: false,
+            Message: err.Error(),
+        })
+		return
+	}
+
+    writeJSON(w, http.StatusOK, model.APIResponse{
         Success: true,
         Message: "OK",
-    }
-
-    w.Header().Set("Content-Type", "application/json")
-
-    if err := json.NewEncoder(w).Encode(resp); err != nil {
-	log.Printf("encode response failed: %v", err)
-    }
+    })
 }

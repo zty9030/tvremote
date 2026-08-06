@@ -3,17 +3,36 @@ package input
 import (
 	"fmt"
 
-	"tvremote/internal/shell"
+	"tvremote/internal/executor"
 )
 
-func SendKey(key string) (*shell.Result, error) {
+type Service struct {
+	executor executor.AndroidExecutor
+}
 
-	code, ok := keyMap[key]
-	if !ok {
-		return nil, fmt.Errorf("unknown key: %s", key)
+func NewService(e executor.AndroidExecutor) *Service {
+
+	return &Service{
+		executor: e,
 	}
 
-	cmd := fmt.Sprintf("input keyevent %d", code)
+}
 
-	return shell.Execute(cmd)
+func (s *Service) SendKey(key string) error {
+
+	code, ok := keyMap[key]
+
+	if !ok {
+
+		return fmt.Errorf("unknown key: %s", key)
+
+	}
+
+	command := fmt.Sprintf(
+		"input keyevent %d",
+		code,
+	)
+
+	return s.executor.Execute(command)
+
 }

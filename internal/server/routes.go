@@ -8,9 +8,8 @@ import (
 	"tvremote/internal/api"
 )
 
-func registerRoutes(r *chi.Mux) {
-
-	r.Post("/api/key", api.Key)
+func RegisterRoutes(r *chi.Mux, h *api.Handler) {
+	r.Post("/api/key", h.Key)
 
 	fs := http.FileServer(http.Dir("./web"))
 
