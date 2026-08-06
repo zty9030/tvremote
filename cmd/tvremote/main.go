@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
-
+	"os"
 	"tvremote/internal/server"
 	"tvremote/internal/executor"
 	"tvremote/internal/input"
@@ -12,9 +12,15 @@ import (
 
 func main() {
 
-	adb := executor.NewADBExecutor("host.docker.internal:16416")
+    var exec executor.AndroidExecutor
 
-	inputService := input.NewService(adb)
+    if addr := os.Getenv("ADB_ADDRESS"); addr != "" {
+        exec = executor.NewADBExecutor(addr)
+    } else {
+        exec = executor.NewShellExecutor()
+    }
+
+	inputService := input.NewService(exec)
 
 	handler := api.NewHandler(inputService)
 
