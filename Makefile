@@ -6,6 +6,11 @@ TVREMOTE_MODE ?= adb
 
 .PHONY: run build android clean
 
+ANDROID_API := 21
+
+CC_ARM := armv7a-linux-androideabi$(ANDROID_API)-clang
+CXX_ARM := armv7a-linux-androideabi$(ANDROID_API)-clang++
+
 fmt:
 	goimports -w .
 
@@ -26,13 +31,13 @@ build:
 	go build -o $(BUILD_DIR)/$(APP) ./cmd/tvremote
 
 android:
-	CGO_ENABLED=0 \
+	CGO_ENABLED=1 \
 	GOOS=android \
 	GOARCH=arm \
 	GOARM=7 \
+	CC=$(CC_ARM) \
+	CXX=$(CXX_ARM) \
 	go build \
-		-tags "netgo osusergo" \
-		-ldflags="-s -w" \
 		-o build/tvremote \
 		./cmd/tvremote
 
