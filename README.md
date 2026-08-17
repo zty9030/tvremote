@@ -17,6 +17,9 @@ make run
 
 ## Android
 
+Build locally:
 ```bash
 make android
 ```
+
+Download pre-built Android binary from [releases](https://github.com/zty9030/tvremote/releases).
