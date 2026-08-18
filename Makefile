@@ -1,7 +1,7 @@
 APP := tvremote
 BUILD_DIR := build
 
-ADB_ADDRESS ?= host.docker.internal:16416
+ADB_ADDRESS ?= 127.0.0.1:5557
 TVREMOTE_MODE ?= adb
 
 .PHONY: run build android clean

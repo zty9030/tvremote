@@ -13,5 +13,10 @@
                 "golang.Go"
             ]
         }
+    },
+    "features": {
+    "ghcr.io/devcontainers/features/sshd:1": {
+        "version": "latest"
     }
+}
 }
